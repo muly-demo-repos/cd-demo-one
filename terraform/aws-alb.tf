@@ -1,9 +1,9 @@
 
-module "ecs_alb_sg_orders" {
+module "ecs_alb_sg_messaging" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.1.0"
 
-  name   = "orders"
+  name   = "messaging"
   vpc_id = module.vpc.vpc_id
 
   ingress_rules       = ["http-80-tcp"]
@@ -13,17 +13,17 @@ module "ecs_alb_sg_orders" {
   egress_cidr_blocks = module.vpc.private_subnets_cidr_blocks
 }
 
-module "ecs_alb_orders" {
+module "ecs_alb_messaging" {
   source  = "terraform-aws-modules/alb/aws"
   version = "8.7.0"
 
-  name = "orders"
+  name = "messaging"
 
   load_balancer_type = "application"
 
   vpc_id          = module.vpc.vpc_id
   subnets         = module.vpc.public_subnets
-  security_groups = [module.ecs_alb_sg_orders.security_group_id]
+  security_groups = [module.ecs_alb_sg_messaging.security_group_id]
 
   http_tcp_listeners = [
     {
@@ -35,7 +35,7 @@ module "ecs_alb_orders" {
 
   target_groups = [
     {
-      name             = "orders"
+      name             = "messaging"
       backend_protocol = "HTTP"
       backend_port     = 5202
       target_type      = "ip"

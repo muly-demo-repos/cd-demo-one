@@ -1,4 +1,4 @@
-module "ecs_cluster_orders" {
+module "ecs_cluster_messaging" {
   source  = "terraform-aws-modules/ecs/aws//modules/cluster"
   version = "5.2.2"
 
@@ -21,20 +21,20 @@ module "ecs_cluster_orders" {
 
 output "cluster_arn" {
   description = "ARN that identifies the cluster"
-  value       = module.ecs_cluster_orders.arn
+  value       = module.ecs_cluster_messaging.arn
 }
 
 output "cluster_id" {
   description = "ID that identifies the cluster"
-  value       = module.ecs_cluster_orders.id
+  value       = module.ecs_cluster_messaging.id
 }
 
 output "cluster_name" {
   description = "Name that identifies the cluster"
-  value       = module.ecs_cluster_orders.name
+  value       = module.ecs_cluster_messaging.name
 }
 
 output "cluster_capacity_providers" {
   description = "Map of cluster capacity providers attributes"
-  value       = module.ecs_cluster_orders.cluster_capacity_providers
+  value       = module.ecs_cluster_messaging.cluster_capacity_providers
 }
