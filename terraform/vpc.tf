@@ -15,11 +15,11 @@ module "vpc" {
   single_nat_gateway           = true
 }
 
-module "sg_messaging" {
+module "sg_purchases" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.0.0"
 
-  name   = "rds-messaging"
+  name   = "rds-purchases"
   vpc_id = module.vpc.vpc_id
 
   ingress_with_cidr_blocks = [
