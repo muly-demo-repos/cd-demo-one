@@ -10,7 +10,7 @@ env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: messaging
   ECS_SERVICE: messaging
-  ECS_CLUSTER: development-cluster
+  ECS_CLUSTER: development-cluster-messaging
   ECS_TASK_DEFINITION: .github/workflows/configuration/cd-messaging-aws-ecs.json
 
 jobs:
