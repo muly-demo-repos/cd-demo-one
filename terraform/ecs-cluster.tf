@@ -1,8 +1,8 @@
-module "ecs_cluster_messaging" {
+module "ecs_cluster_orders" {
   source  = "terraform-aws-modules/ecs/aws//modules/cluster"
   version = "5.2.2"
 
-  cluster_name = "${local.environment}-cluster"
+  cluster_name = "${local.environment}-cluster-orders"
 
   fargate_capacity_providers = {
     FARGATE = {
@@ -21,20 +21,20 @@ module "ecs_cluster_messaging" {
 
 output "cluster_arn" {
   description = "ARN that identifies the cluster"
-  value       = module.ecs_cluster_messaging.arn
+  value       = module.ecs_cluster_orders.arn
 }
 
 output "cluster_id" {
   description = "ID that identifies the cluster"
-  value       = module.ecs_cluster_messaging.id
+  value       = module.ecs_cluster_orders.id
 }
 
 output "cluster_name" {
   description = "Name that identifies the cluster"
-  value       = module.ecs_cluster_messaging.name
+  value       = module.ecs_cluster_orders.name
 }
 
 output "cluster_capacity_providers" {
   description = "Map of cluster capacity providers attributes"
-  value       = module.ecs_cluster_messaging.cluster_capacity_providers
+  value       = module.ecs_cluster_orders.cluster_capacity_providers
 }
